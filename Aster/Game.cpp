@@ -5,6 +5,10 @@
 #include "pch.h"
 #include "Game.h"
 
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#include <Model.h>
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 extern void ExitGame();
 
 using namespace DirectX;
@@ -38,6 +42,22 @@ void Game::Initialize(HWND window, int width, int height)
     */
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//エフェクトファクトリの作成
+	m_EffectFactory = std::make_unique<EffectFactory>(m_d3dDevice.Get());
+
+	m_EffectFactory->SetDirectory(L"Resources");//テクスチャパス
+
+	//モデル読み込み
+	m_model = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/Box.cmo", *m_EffectFactory);
+
+	//汎用描画ステート
+	m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
+
+	//ワールド座標
+	m_world = DirectX::SimpleMath::Matrix::Identity;
+
+
+
 	//カメラの初期設定
 
 	//3Dオブジェクトの読み込み
@@ -70,7 +90,7 @@ void Game::Update(DX::StepTimer const& timer)
 	//カメラの更新
 
 	//3Dモデルの更新
-
+	
 	//Asterの計算
 
 	//プレイヤーの更新
@@ -94,6 +114,7 @@ void Game::Render()
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//3Dオブジェクトの表示
+	m_model->Draw(m_d3dContext.Get(), *m_states, m_world, DirectX::SimpleMath::Matrix::Identity, DirectX::SimpleMath::Matrix::Identity);
 
 	//マップチップの表示
 

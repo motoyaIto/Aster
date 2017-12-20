@@ -6,6 +6,12 @@
 
 #include "StepTimer.h"
 
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#include <Effects.h>
+#include <Model.h>
+#include <SimpleMath.h>
+#include <CommonStates.h>
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -62,4 +68,12 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	std::unique_ptr<DirectX::EffectFactory> m_EffectFactory;//エフェクトファクトリ
+	std::unique_ptr<DirectX::Model> m_model;//3Dモデル
+	std::unique_ptr<DirectX::CommonStates> m_states;//汎用描画ステート
+
+	DirectX::SimpleMath::Matrix m_world;//ワールド座標
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 };
