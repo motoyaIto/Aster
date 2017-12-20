@@ -38,7 +38,13 @@ void Game::Initialize(HWND window, int width, int height)
     */
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//カメラの初期設定
+
 	//3Dオブジェクトの読み込み
+
+	//マップチップの読み込み
+
+	//プレイヤーの読み込み
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
@@ -59,6 +65,17 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here.
+
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//カメラの更新
+
+	//3Dモデルの更新
+
+	//Asterの計算
+
+	//プレイヤーの更新
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     elapsedTime;
 }
 
@@ -77,6 +94,12 @@ void Game::Render()
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//3Dオブジェクトの表示
+
+	//マップチップの表示
+
+	//Asterの結果を表示(テラインをかぶせる)
+
+	//プレイヤーの表示
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     Present();
 }
@@ -161,7 +184,7 @@ void Game::CreateDevice()
     UINT creationFlags = 0;
 
 #ifdef _DEBUG
-    creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
+    //creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
     static const D3D_FEATURE_LEVEL featureLevels [] =
