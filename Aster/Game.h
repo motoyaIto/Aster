@@ -6,6 +6,8 @@
 
 #include "StepTimer.h"
 
+#include "DirectXResources//Obj3D//Obj3D.h"
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #include <Effects.h>
 #include <Model.h>
@@ -69,11 +71,8 @@ private:
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
 
+	std::unique_ptr<Obj3D>* m_FildCube;//床
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	std::unique_ptr<DirectX::EffectFactory> m_EffectFactory;//エフェクトファクトリ
-	std::unique_ptr<DirectX::Model> m_model;//3Dモデル
-	std::unique_ptr<DirectX::CommonStates> m_states;//汎用描画ステート
-
-	DirectX::SimpleMath::Matrix m_world;//ワールド座標
+	
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 };

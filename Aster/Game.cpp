@@ -7,6 +7,8 @@
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #include <Model.h>
+
+#include "DirectXResources//DirectXResources.h"
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 extern void ExitGame();
@@ -41,22 +43,12 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
 
+	DirectXResources::InitializeStatic(m_d3dDevice, m_d3dContext);
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//エフェクトファクトリの作成
-	m_EffectFactory = std::make_unique<EffectFactory>(m_d3dDevice.Get());
-
-	m_EffectFactory->SetDirectory(L"Resources");//テクスチャパス
-
 	//モデル読み込み
-	m_model = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/Box.cmo", *m_EffectFactory);
-
-	//汎用描画ステート
-	m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
-
-	//ワールド座標
-	m_world = DirectX::SimpleMath::Matrix::Identity;
-
-
+	m_FildCube = new std::unique_ptr<Obj3D>[5];
+	m_FildCube[0] = std::make_unique<Obj3D>();
+	m_FildCube[0]->LoadModel(L"Resources/Box.cmo");
 
 	//カメラの初期設定
 
@@ -114,7 +106,7 @@ void Game::Render()
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//3Dオブジェクトの表示
-	m_model->Draw(m_d3dContext.Get(), *m_states, m_world, DirectX::SimpleMath::Matrix::Identity, DirectX::SimpleMath::Matrix::Identity);
+	m_FildCube[0]->Render();
 
 	//マップチップの表示
 

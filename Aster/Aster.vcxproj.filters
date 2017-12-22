@@ -5,16 +5,34 @@
       <UniqueIdentifier>8987bfe9-637c-4474-9b32-cf391c799803</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="DirectXResources">
+      <UniqueIdentifier>{86677076-9d92-4724-85b7-f3ec7a407e5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXResources\Obj3D">
+      <UniqueIdentifier>{966b4b60-8c67-4d77-851f-f9bcad54c8c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="StepTimer.h" />
+    <ClInclude Include="DirectXResources\DirectXResources.h">
+      <Filter>DirectXResources</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXResources\Obj3D\Obj3D.h">
+      <Filter>DirectXResources\Obj3D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="DirectXResources\DirectXResources.cpp">
+      <Filter>DirectXResources</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXResources\Obj3D\Obj3D.cpp">
+      <Filter>DirectXResources\Obj3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

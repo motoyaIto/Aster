@@ -161,11 +161,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DirectXResources\DirectXResources.h" />
+    <ClInclude Include="DirectXResources\Obj3D\Obj3D.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DirectXResources\DirectXResources.cpp" />
+    <ClCompile Include="DirectXResources\Obj3D\Obj3D.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
