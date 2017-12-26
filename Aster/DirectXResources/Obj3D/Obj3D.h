@@ -36,6 +36,7 @@ public:
 
 	void Initialize();
 	void UpdateO();
+	void UpdateQ();
 	void Render();
 
 	void LoadModel(const wchar_t* fileName);//ƒ‚ƒfƒ‹“Ç‚İ‚İ

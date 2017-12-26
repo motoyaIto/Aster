@@ -50,6 +50,9 @@ void Game::Initialize(HWND window, int width, int height)
 	m_FildCube[0] = std::make_unique<Obj3D>();
 	m_FildCube[0]->LoadModel(L"Resources/Box.cmo");
 
+	m_FildCube[0]->SetScale(DirectX::SimpleMath::Vector3(1.0f, 1.0f, 1.0f));
+	m_FildCube[0]->SetRotQ(DirectX::SimpleMath::Quaternion(0.0f, 0.0f, 0.0f, 1.0f));
+	m_FildCube[0]->SetTranslation(DirectX::SimpleMath::Vector3(0.0f, 0.0f, 0.0f));
 	//カメラの初期設定
 
 	//3Dオブジェクトの読み込み
@@ -82,7 +85,7 @@ void Game::Update(DX::StepTimer const& timer)
 	//カメラの更新
 
 	//3Dモデルの更新
-	
+	//m_FildCube[0]->UpdateQ();
 	//Asterの計算
 
 	//プレイヤーの更新

@@ -8,8 +8,6 @@
 
 Obj3D::Obj3D()
 	: m_world(Matrix::Identity)
-	, m_view(Matrix::Identity)
-	, m_proj(Matrix::Identity)
 {
 	//エフェクトファクトリの作成
 	m_EffectFactory = std::make_unique<DirectX::EffectFactory>(DirectXResources::m_d3dDevice.Get());
@@ -32,6 +30,39 @@ void Obj3D::Initialize()
 
 void Obj3D::UpdateO()
 {
+	//サイズ行列
+	Matrix scale = Matrix::CreateScale(m_scale);
+
+	//回転行列
+	Matrix rot;
+
+	Matrix rotX = Matrix::CreateRotationX(m_rotO.x);
+	Matrix rotY = Matrix::CreateRotationY(m_rotO.y);
+	Matrix rotZ = Matrix::CreateRotationZ(m_rotO.z);
+
+	rot = rotX * rotY * rotZ;
+
+	//移動行列
+	Matrix translation = Matrix::CreateTranslation(m_translation);
+
+	//ワールド行列の計算
+	m_world = scale * rot * translation;
+}
+
+void Obj3D::UpdateQ()
+{
+	//サイズ行列
+	Matrix scale = Matrix::CreateScale(m_scale);
+
+	//回転行列
+	Matrix rot = Matrix::CreateFromQuaternion(m_rotQ);
+
+	//移動行列
+	Matrix translation = Matrix::CreateTranslation(m_translation);
+
+	//ワールド行列の計算
+	m_world = scale * rot * translation;
+
 
 }
 
@@ -39,7 +70,7 @@ void Obj3D::Render()
 {
 	if (m_model)
 	{
-		m_model->Draw(DirectXResources::m_d3dContext.Get(), *m_states, m_world, m_view, m_proj);
+		m_model->Draw(DirectXResources::m_d3dContext.Get(), *m_states, m_world, Matrix::Identity/*m_view*/, Matrix::Identity/*m_proj*/);
 	}
 }
 
