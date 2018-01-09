@@ -11,6 +11,9 @@
     <Filter Include="DirectXResources\Obj3D">
       <UniqueIdentifier>{966b4b60-8c67-4d77-851f-f9bcad54c8c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{c9b17c3c-95dd-4fae-bff5-17635952c3bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -22,6 +25,9 @@
     <ClInclude Include="DirectXResources\Obj3D\Obj3D.h">
       <Filter>DirectXResources\Obj3D</Filter>
     </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -32,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="DirectXResources\Obj3D\Obj3D.cpp">
       <Filter>DirectXResources\Obj3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -54,7 +54,16 @@ void Game::Initialize(HWND window, int width, int height)
 	m_FildCube[0]->SetRotQ(DirectX::SimpleMath::Quaternion(0.0f, 0.0f, 0.0f, 1.0f));
 	m_FildCube[0]->SetTranslation(DirectX::SimpleMath::Vector3(0.0f, 0.0f, 0.0f));
 	//カメラの初期設定
+	m_view = DirectX::SimpleMath::Matrix::Identity;
+	m_pos = DirectX::SimpleMath::Vector3(0, 0, 0.1);
+	m_targetPos = DirectX::SimpleMath::Vector3(0, 0, 0);
+	m_upvec = DirectX::SimpleMath::Vector3(0, 1, 0);
 
+	m_proj = DirectX::SimpleMath::Matrix::Identity;
+	m_fovY = XMConvertToRadians(60.0f);//縦の写す
+	m_aspect = (float)width / height;//縦横の
+	m_nearClip = 0.1f;//手前
+	m_farClip = 1000.0f;//奥の
 	//3Dオブジェクトの読み込み
 
 	//マップチップの読み込み
@@ -83,9 +92,10 @@ void Game::Update(DX::StepTimer const& timer)
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//カメラの更新
-
+	m_view = DirectX::SimpleMath::Matrix::CreateLookAt(m_pos, m_targetPos, m_upvec);
+	m_proj = DirectX::SimpleMath::Matrix::CreatePerspectiveFieldOfView(m_fovY, m_aspect, m_nearClip, m_farClip);
 	//3Dモデルの更新
-	//m_FildCube[0]->UpdateQ();
+	m_FildCube[0]->UpdateQ();
 	//Asterの計算
 
 	//プレイヤーの更新

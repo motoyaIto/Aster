@@ -8,6 +8,10 @@
 
 Obj3D::Obj3D()
 	: m_world(Matrix::Identity)
+	, m_scale(Vector3::Zero)
+	, m_rotQ(Quaternion::Identity)
+	, m_rotO(Vector3::Zero)
+	, m_translation(Vector3::Zero)
 {
 	//エフェクトファクトリの作成
 	m_EffectFactory = std::make_unique<DirectX::EffectFactory>(DirectXResources::m_d3dDevice.Get());

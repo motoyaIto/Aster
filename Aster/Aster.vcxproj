@@ -161,6 +161,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="DirectXResources\DirectXResources.h" />
     <ClInclude Include="DirectXResources\Obj3D\Obj3D.h" />
     <ClInclude Include="Game.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera\Camera.cpp" />
     <ClCompile Include="DirectXResources\DirectXResources.cpp" />
     <ClCompile Include="DirectXResources\Obj3D\Obj3D.cpp" />
     <ClCompile Include="Game.cpp" />

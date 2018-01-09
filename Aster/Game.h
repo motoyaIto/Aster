@@ -73,6 +73,20 @@ private:
 
 	std::unique_ptr<Obj3D>* m_FildCube;//床
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//ビュー行列
+	DirectX::SimpleMath::Matrix m_view;//ビュー行列(カメラを基準とした座標系に変換)
+
+	DirectX::SimpleMath::Vector3 m_pos;//カメラの位置(eyepos)
+	DirectX::SimpleMath::Vector3 m_targetPos;//参照点(見る場所 refpos)
+	DirectX::SimpleMath::Vector3 m_upvec;//上方向ベクトル(カメラの上側を指す)
+
+	//プロジェクション行列(射影行列)
+	DirectX::SimpleMath::Matrix m_proj;//プロジェクション行列(ビュー行列をもとにスクリーン中央を基準とした座標系に変換)
 	
+	float m_fovY;//縦の写す範囲(垂直方向視野角)
+	float m_aspect;//縦横の比率(アスペクト比)
+	float m_nearClip;//手前の表示限界距離(ニアクリップ)
+	float m_farClip;//奥の表示限界距離
+
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 };
